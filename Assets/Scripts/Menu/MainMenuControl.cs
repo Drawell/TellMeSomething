@@ -11,5 +11,6 @@ public class MainMenuControl : MonoBehaviour
     public void OnQuitClick()
     {
         Application.Quit();
+
     }
 }

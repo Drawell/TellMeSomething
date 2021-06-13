@@ -1,0 +1,41 @@
+{
+    "TaleName": "ForeverNotAlone",
+    "ActId": 0,
+
+    "StartNodes": 
+    [
+        {
+            "Id": 0,
+            "Timeout": 2000,
+            "ChildNodesId": [1],      
+            "ActNum": 1,
+            "ActName": "Знакомство"            
+        }
+    ],
+    "Replicas":
+    [
+        {
+            "Id": 1,
+            "Timeout": 5000,
+            "ChildNodesId": [2],
+            "Text": "Привет, мир!",
+            "Emotion": 1
+        },
+        {
+            "Id": 2,
+            "Timeout": -1,
+            "ChildNodesId": [3],
+            "Text": "Реплика номер два",
+            "Emotion": 0
+        }
+    ],
+    "EndNodes":
+    [
+        {
+            "Id": 3,
+            "Timeout": 1000,
+            "ChildNodesId": [],
+            "EndingId": 1
+        }
+    ]
+}
