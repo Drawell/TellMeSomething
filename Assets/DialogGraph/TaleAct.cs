@@ -6,6 +6,12 @@ namespace DialogGraph
     {
         public string TaleName;
         public int ActId;
+
+        private Dictionary<int, Character> _characters = new Dictionary<int, Character>();
+        public Dictionary<int, Character> Characters
+        {
+            get => _characters;
+        }
         private Dictionary<int, StartNode> _startNodes = new Dictionary<int, StartNode>();
         public Dictionary<int, StartNode> StartNodes
         {

@@ -8,7 +8,7 @@ namespace DialogGraph
     public class Replica : Node
     {
         public string Text;
-        public EmotionEnum Emotion;
+        public Emotion Emotion;
     }
 
 }

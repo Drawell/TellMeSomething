@@ -6,17 +6,19 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     public DefaultStartNodeExecutor startNodeExcecutor;
+    public DefaultCharAppExecutor charAppExecutor;
+    public DefaultChoiseExecutor choiseExecutor;
     public DefaultReplicaExecutor replicaExecutor;
     public DefaultEndNodeExecutor endNodeExecutor;
 
     private Node _currentNode;
     private bool _isCanMakeNextStep = false;
-    private int _userChoise = 0;
+    private int _playerChoise = 0;
 
-    private float _timeLeft = 0;
-    private float _minimalTimeInputIgnore = 500;
-    private float _minimalTimeLeft;
-    private bool _infiniteWaiting = false;
+    private float _timeCounter = 0f;
+    private float _initialDelay = 0f;
+    private float _autoSkipDelay = 0f;
+    private bool _isAutoSkipEnable = true;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
         {
             TaleAct act = ActLoader.LoadAct(actOnePath,
                 startNodeExcecutor,
+                charAppExecutor,
+                choiseExecutor,
                 replicaExecutor,
                 endNodeExecutor);
 
@@ -39,46 +43,60 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (_currentNode == null)
+            return;
 
+        _timeCounter += Time.deltaTime * 1000;
+        _isCanMakeNextStep = _isCanMakeNextStep || IsPlayerMakeRandomClick() || IsAutoSkipTimeout();
 
-        if (_isCanMakeNextStep && _currentNode != Node.EmptyNode)
+        if (_currentNode != Node.EmptyNode && _isCanMakeNextStep)
         {
-            _currentNode.Execute();
-            _isCanMakeNextStep = false;
-            _timeLeft = _currentNode.Timeout;
-            _minimalTimeLeft = _minimalTimeInputIgnore;
-            _infiniteWaiting = _timeLeft < 0;
-            _currentNode = _currentNode.GetNextNode(_userChoise);
+            ExecuteNextNode();
         }
+    }
 
-        if (_minimalTimeLeft < 0)
+    private bool IsPlayerMakeRandomClick()
+    {
+        if (_timeCounter > _initialDelay)
         {
             for (int i = 0; i < Input.touchCount; ++i)
             {
                 if (Input.GetTouch(i).phase == TouchPhase.Began)
                 {
-                    _isCanMakeNextStep = true;
+                    return true;
                 }
             }
             if (Input.GetMouseButtonDown(0))
             {
-                _isCanMakeNextStep = true;
+                return true;
             }
         }
-        else
-        {
-            _minimalTimeLeft -= Time.deltaTime * 1000;
-        }
 
-        if (_timeLeft <= 0 && !_infiniteWaiting)
-        {
-            _isCanMakeNextStep = true;
-        }
-        else
-        {
-            _timeLeft -= Time.deltaTime * 1000;
-        }
+        return false;
+    }
 
+    private bool IsAutoSkipTimeout()
+    {
+        if (_isAutoSkipEnable && _timeCounter > _autoSkipDelay)
+            return true;
 
+        return false;
+    }
+
+    private void ExecuteNextNode()
+    {
+        _currentNode.Execute();
+        _isCanMakeNextStep = false;
+        _initialDelay = _currentNode.InitialDelay;
+        _autoSkipDelay = _currentNode.AutoSkipDelay;
+        _isAutoSkipEnable = !(_autoSkipDelay < 0.1);
+        _currentNode = _currentNode.GetNextNode(_playerChoise);
+        _playerChoise = 0;
+    }
+
+    public void OnPlayerMakeChose(int choise)
+    {
+        _playerChoise = choise;
+        _isCanMakeNextStep = true;
     }
 }

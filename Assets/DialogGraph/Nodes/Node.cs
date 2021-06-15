@@ -17,7 +17,8 @@ namespace DialogGraph
         }
 
         public int Id;
-        public int Timeout;
+        public float InitialDelay;
+        public float AutoSkipDelay;
         public int[] ChildNodesId;
 
         protected INodeExecutor Executor;

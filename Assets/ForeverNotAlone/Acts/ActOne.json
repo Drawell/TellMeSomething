@@ -2,37 +2,83 @@
     "TaleName": "ForeverNotAlone",
     "ActId": 0,
 
-    "StartNodes": 
+    "Characters":
+    [
+        {
+            "Id": 1,
+            "Name": "Пацан",
+            "Attitude": -0.5
+        }
+    ],
+
+    "StartNodes":
     [
         {
             "Id": 0,
-            "Timeout": 2000,
-            "ChildNodesId": [1],      
+            "InitialDelay": 2000,
+            "AutoSkipDelay": 0,
+            "ChildNodesId": [1],
+            
             "ActNum": 1,
             "ActName": "Знакомство"            
         }
     ],
-    "Replicas":
+
+    "CharacterAppearances":
     [
         {
             "Id": 1,
-            "Timeout": 5000,
+            "InitialDelay": 500,
+            "AutoSkipDelay": 0,
             "ChildNodesId": [2],
-            "Text": "Привет, мир!",
-            "Emotion": 1
-        },
-        {
-            "Id": 2,
-            "Timeout": -1,
-            "ChildNodesId": [3],
-            "Text": "Реплика номер два",
-            "Emotion": 0
+            
+            "CaracterId": 0,
+            "Position": 0
         }
     ],
-    "EndNodes":
+
+    "ChoiseNodes":
+    [
+        {
+            "Id": 2,
+            "InitialDelay": 0,
+            "AutoSkipDelay": -1,
+            "ChildNodesId": [3, 4],
+
+            "Choises":
+            {
+                "1": "Парень, 15 рубелей не найдется?", 
+                "2": "Классный прикид"
+            }
+        }
+    ],
+
+    "Replicas":
     [
         {
             "Id": 3,
+            "InitialDelay": 100,
+            "AutoSkipDelay": 0,
+            "ChildNodesId": [5],
+
+            "Text": "Отстань от меня",
+            "Emotion": 1
+        },
+        {
+            "Id": 4,
+            "InitialDelay": 100,
+            "AutoSkipDelay": 0,
+            "ChildNodesId": [5],
+
+            "Text": "Спасибо, что тебе надо?",
+            "Emotion": 0
+        }
+    ],
+
+    "EndNodes":
+    [
+        {
+            "Id": 5,
             "Timeout": 1000,
             "ChildNodesId": [],
             "EndingId": 1

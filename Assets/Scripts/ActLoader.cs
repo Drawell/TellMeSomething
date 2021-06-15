@@ -8,8 +8,11 @@ public static class ActLoader
 {
     public static TaleAct LoadAct(string actPath,
         NodeExecutorMediator<StartNode> startNodeExcecutor,
+        NodeExecutorMediator<CharacterAppearance> charAppExecutor,
+        NodeExecutorMediator<Choise> choiseExecutor,
         NodeExecutorMediator<Replica> replicaExecutor,
-        NodeExecutorMediator<EndNode> endNodeExecutor)
+        NodeExecutorMediator<EndNode> endNodeExecutor
+        )
     {
         TaleAct taleAct = new TaleAct();
         if (File.Exists(actPath))
@@ -20,6 +23,11 @@ public static class ActLoader
             taleAct.TaleName = savedTaleAct.TaleName;
             taleAct.ActId = savedTaleAct.ActId;
 
+            foreach (Character character in savedTaleAct.Characters)
+            {
+                taleAct.Characters.Add(character.Id, character);
+            }
+
             foreach (StartNode startNode in savedTaleAct.StartNodes)
             {
                 if (startNodeExcecutor == null)
@@ -29,8 +37,11 @@ public static class ActLoader
                 taleAct.StartNodes.Add(startNode.Id, startNode);
             }
 
+            ActLoader.AddNodesToHeap(taleAct, savedTaleAct.CharacterAppearances, charAppExecutor);
+            ActLoader.AddNodesToHeap(taleAct, savedTaleAct.ChoiseNodes, choiseExecutor);
             ActLoader.AddNodesToHeap(taleAct, savedTaleAct.Replicas, replicaExecutor);
             ActLoader.AddNodesToHeap(taleAct, savedTaleAct.EndNodes, endNodeExecutor);
+
 
             taleAct.CreateNodesConnections();
             return taleAct;
@@ -57,7 +68,11 @@ public static class ActLoader
     {
         public string TaleName;
         public int ActId;
+
+        public Character[] Characters;
         public StartNode[] StartNodes;
+        public CharacterAppearance[] CharacterAppearances;
+        public Choise[] ChoiseNodes;
         public Replica[] Replicas;
         public EndNode[] EndNodes;
 
