@@ -6,7 +6,7 @@ namespace DialogGraph
     [Serializable()]
     public class Choise : Node
     {
-        public Dictionary<int, string> Choises;
+        public List<string> Choises;
 
     }
 }

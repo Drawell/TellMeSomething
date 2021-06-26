@@ -3,9 +3,8 @@ using System;
 namespace DialogGraph
 {
     [Serializable()]
-    public class CharacterAppearance : Node
+    public class CharacterAppearance : CharacteredNode
     {
-        public int CharacterId;
         public CharacterPosition Position;
     }
 }
