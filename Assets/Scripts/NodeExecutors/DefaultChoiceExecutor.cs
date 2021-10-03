@@ -5,20 +5,23 @@ using DialogGraph;
 using System;
 using TMPro;
 
-public class DefaultChoiseExecutor : NodeExecutorMediator<Choise>
+public class DefaultChoiceExecutor : NodeExecutorMediator<Choice>
 {
     public GameObject ChoisePanel;
     public List<GameObject> ChoiseButtons;
 
-    public override void Execute(Choise node)
+    public override void Execute(Choice node)
     {
         Debug.Log("Choise node");
 
         ChoisePanel.SetActive(true);
         int idx = 0;
 
-        foreach (string choise in node.Choises)
+        foreach (string choise in node.Choices)
         {
+            if (choise == "")
+                break;
+
             if (ChoiseButtons.Count <= idx)
                 throw new Exception("Need more choise buttons");
 

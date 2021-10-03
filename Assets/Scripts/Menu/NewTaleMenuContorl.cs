@@ -5,6 +5,6 @@ public class NewTaleMenuContorl : MonoBehaviour
 {
     public void OnTaleStartForeverNotAlone()
     {
-        SceneManager.LoadScene("ForeverNotAlone");
+        SceneManager.LoadScene("InSearchingForChekushka");
     }
 }

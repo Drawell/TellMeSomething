@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace DialogGraph
 {
     [Serializable()]
-    public class Choise : Node
+    public class Choice : Node
     {
-        public List<string> Choises;
+        public List<string> Choices;
 
     }
 }

@@ -42,7 +42,7 @@
         }
     ],
 
-    "ChoiseNodes":
+    "ChoiceNodes":
     [
         {
             "Id": 3,
@@ -50,7 +50,7 @@
             "AutoSkipDelay": -1,
             "ChildNodesId": [6, 4, 5],
 
-            "Choises":
+            "Choices":
             [
                 "Парень, 15 рубелей не найдется?", 
                 "Классный прикид"

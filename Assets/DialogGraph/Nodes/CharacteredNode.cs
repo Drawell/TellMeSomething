@@ -5,7 +5,7 @@ namespace DialogGraph
     [Serializable()]
     public class CharacteredNode : Node
     {
-        public int CharacterId;
+        public string CharacterId;
 
         [NonSerialized()]
         public Character CharacterInstance;
