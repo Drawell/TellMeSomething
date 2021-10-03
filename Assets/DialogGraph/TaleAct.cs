@@ -7,11 +7,12 @@ namespace DialogGraph
         public string TaleName;
         public int ActId;
 
-        private Dictionary<int, Character> _characters = new Dictionary<int, Character>();
-        public Dictionary<int, Character> Characters
+        private Dictionary<string, Character> _characters = new Dictionary<string, Character>();
+        public Dictionary<string, Character> Characters
         {
             get => _characters;
         }
+
         private Dictionary<int, StartNode> _startNodes = new Dictionary<int, StartNode>();
         public Dictionary<int, StartNode> StartNodes
         {
@@ -43,9 +44,13 @@ namespace DialogGraph
 
         private void CreateConnectionForNode(Node node)
         {
-            foreach (int childId in node.ChildNodesId)
+            foreach (int childId in node.NextNodesId)
             {
-                if (_nodeHeap.ContainsKey(childId))
+                if (childId == -1)
+                {
+                    node.AddNextNode(Node.EmptyNode);
+                }
+                else if (_nodeHeap.ContainsKey(childId))
                 {
                     node.AddNextNode(_nodeHeap[childId]);
                 }
@@ -58,9 +63,11 @@ namespace DialogGraph
 
         public StartNode GetStartNode(int startNodeId = 0)
         {
-            if (_startNodes.ContainsKey(startNodeId))
+            if (_startNodes.Count > 0)
             {
-                return _startNodes[0];
+                foreach (StartNode node in _startNodes.Values)
+                    return node;
+                return null;
             }
             else
             {

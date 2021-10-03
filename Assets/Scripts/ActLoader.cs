@@ -10,15 +10,17 @@ public static class ActLoader
     public static TaleAct LoadAct(string act,
         NodeExecutorMediator<StartNode> startNodeExcecutor,
         NodeExecutorMediator<CharacterAppearance> charAppExecutor,
-        NodeExecutorMediator<Choise> choiseExecutor,
+        NodeExecutorMediator<CharacterDisappearance> charDisappExeutor,
+        NodeExecutorMediator<Choice> choiseExecutor,
         NodeExecutorMediator<Replica> replicaExecutor,
+        NodeExecutorMediator<AddItemNode> addItemNodeExecutor,
+        NodeExecutorMediator<SwitchByItem> swithcByItemExecutor,
+        NodeExecutorMediator<SetLandscape> setLandscapeExecutor,
         NodeExecutorMediator<EndNode> endNodeExecutor
         )
     {
         TaleAct taleAct = new TaleAct();
-        //if (File.Exists(actPath))
-        //{
-        string content = act;//File.ReadAllText(actPath);
+        string content = act;
 
         SaveTaleActObject savedTaleAct = JsonUtility.FromJson<SaveTaleActObject>(content);
         taleAct.TaleName = savedTaleAct.TaleName;
@@ -26,7 +28,7 @@ public static class ActLoader
 
         foreach (Character character in savedTaleAct.Characters)
         {
-            taleAct.Characters.Add(character.Id, character);
+            taleAct.Characters.Add(character.CharId, character);
         }
 
         foreach (StartNode startNode in savedTaleAct.StartNodes)
@@ -39,20 +41,20 @@ public static class ActLoader
         }
 
         ActLoader.AddNodesToHeap(taleAct, savedTaleAct.CharacterAppearances, charAppExecutor);
-        ActLoader.AddNodesToHeap(taleAct, savedTaleAct.ChoiseNodes, choiseExecutor);
+        ActLoader.AddNodesToHeap(taleAct, savedTaleAct.CharacterDisappearances, charDisappExeutor);
+        ActLoader.AddNodesToHeap(taleAct, savedTaleAct.Choices, choiseExecutor);
         ActLoader.AddNodesToHeap(taleAct, savedTaleAct.Replicas, replicaExecutor);
+        ActLoader.AddNodesToHeap(taleAct, savedTaleAct.AddItemNodes, addItemNodeExecutor);
+        ActLoader.AddNodesToHeap(taleAct, savedTaleAct.SwitchByItems, swithcByItemExecutor);
+        ActLoader.AddNodesToHeap(taleAct, savedTaleAct.SetLandscapes, setLandscapeExecutor);
         ActLoader.AddNodesToHeap(taleAct, savedTaleAct.EndNodes, endNodeExecutor);
 
         ActLoader.FindAndSetCharacter(taleAct, savedTaleAct.CharacterAppearances);
+        ActLoader.FindAndSetCharacter(taleAct, savedTaleAct.CharacterDisappearances);
         ActLoader.FindAndSetCharacter(taleAct, savedTaleAct.Replicas);
 
         taleAct.CreateNodesConnections();
         return taleAct;
-        //}
-        //else
-        //{
-        //throw new System.Exception($"No such file {actPath}");
-        //}
     }
     private static void AddNodesToHeap(TaleAct taleAct, IEnumerable<Node> nodes, INodeExecutor executor)
     {
@@ -88,8 +90,12 @@ public static class ActLoader
         public Character[] Characters;
         public StartNode[] StartNodes;
         public CharacterAppearance[] CharacterAppearances;
-        public Choise[] ChoiseNodes;
+        public CharacterDisappearance[] CharacterDisappearances;
+        public Choice[] Choices;
         public Replica[] Replicas;
+        public AddItemNode[] AddItemNodes;
+        public SwitchByItem[] SwitchByItems;
+        public SetLandscape[] SetLandscapes;
         public EndNode[] EndNodes;
 
     }

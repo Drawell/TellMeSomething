@@ -3,10 +3,12 @@ namespace DialogGraph
 {
     public enum Emotion : int
     {
-        Normal = 0,
-        Happy = 1,
-        Sad = 2,
-        Angry = 3
+        NEUTRAL = 0,
+        SAD = 1,
+        ANGRY = 2,
+        HAPPY = 3,
+        FRIGHTENED = 4,
+        SURPRISED = 5
 
 
     }

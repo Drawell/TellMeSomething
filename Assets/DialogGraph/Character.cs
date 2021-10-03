@@ -5,9 +5,9 @@ namespace DialogGraph
     [Serializable()]
     public class Character
     {
-        public int Id;
+        public string CharId;
         public string Name;
 
-        public float Attitude;
+        //public int Attitude;
     }
 }

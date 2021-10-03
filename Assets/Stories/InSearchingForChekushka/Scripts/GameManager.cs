@@ -10,8 +10,12 @@ public class GameManager : MonoBehaviour
     public List<TextAsset> ActsJson;
     public DefaultStartNodeExecutor startNodeExcecutor;
     public DefaultCharAppExecutor charAppExecutor;
-    public DefaultChoiseExecutor choiseExecutor;
+    public DefaultCharDisappExecutor charDisappExecutor;
+    public DefaultChoiceExecutor choiseExecutor;
     public DefaultReplicaExecutor replicaExecutor;
+    public DefaultAddItemNodeExecutor addItemNodeExecutor;
+    public DefaultSwitchByItemExecutor switchByItemExecutor;
+    public DefaultSetLandscapeExecutor setLandscapeExecutor;
     public DefaultEndNodeExecutor endNodeExecutor;
 
     private Node _currentNode;
@@ -26,17 +30,21 @@ public class GameManager : MonoBehaviour
     private float _autoSkipDelay = 0f;
     private bool _isAutoSkipEnable = true;
 
+    private bool _crushed = false;
+
     void Start()
     {
-        //string actOnePath = Path.Combine(Application.persistentDataPath, "ForeverNotAlone", "ActOne.json");
-
         try
         {
             TaleAct act = ActLoader.LoadAct(ActsJson[0].text,
                 startNodeExcecutor,
                 charAppExecutor,
+                charDisappExecutor,
                 choiseExecutor,
                 replicaExecutor,
+                addItemNodeExecutor,
+                switchByItemExecutor,
+                setLandscapeExecutor,
                 endNodeExecutor);
 
             _nextNode = act.GetStartNode();
@@ -45,11 +53,15 @@ public class GameManager : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.LogError(e.Message);
+            _crushed = true;
         }
     }
 
     void Update()
     {
+        if (_crushed)
+            return;
+
         _timeCounter += Time.deltaTime * 1000;
         _isCanMakeNextStep = _isCanMakeNextStep || IsPlayerMakeRandomClick() || IsAutoSkipTimeout();
 
@@ -57,6 +69,11 @@ public class GameManager : MonoBehaviour
         {
             ExecuteNode(_nextNode);
             _nextNode = _currentNode.GetNextNode();
+        }
+        else if (_nextNode == Node.EmptyNode || _nextNode == null)
+        {
+            _crushed = true;
+            Debug.Log("Node is empty or Null");
         }
 
     }
@@ -97,7 +114,15 @@ public class GameManager : MonoBehaviour
         _autoSkipDelay = _currentNode.AutoSkipDelay;
         _isAutoSkipEnable = _autoSkipDelay > -0.01;
         _timeCounter = 0;
-        _currentNode.Execute();
+        try
+        {
+            _currentNode.Execute();
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message);
+            _crushed = true;
+        }
     }
 
     public void OnPlayerMakeChose(int choise)

@@ -10,6 +10,6 @@ public class DefaultReplicaExecutor : NodeExecutorMediator<Replica>
     public override void Execute(Replica node)
     {
         TextPanel.SetActive(true);
-        TextHolder.text = node.Text;
+        TextHolder.text = node.ReplicaText;
     }
 }

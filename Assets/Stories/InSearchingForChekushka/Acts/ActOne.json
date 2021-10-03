@@ -1,0 +1,471 @@
+{
+    "Id": 2226185215760,
+    "TaleName": "В Поисках Чекушки",
+    "ActId": 1,
+    "Characters": [
+        {
+            "Id": 0,
+            "CharId": "teller",
+            "Name": "Teller"
+        },
+        {
+            "Id": 2303621152336,
+            "CharId": "guy",
+            "Name": "Парень"
+        },
+        {
+            "Id": 2303621150800,
+            "CharId": "girl_1",
+            "Name": "Шкура"
+        },
+        {
+            "Id": 2303621100304,
+            "CharId": "girl_2",
+            "Name": "Мымра"
+        }
+    ],
+    "StartNodes": [
+        {
+            "Id": 2303621166992,
+            "InitialDelay": 2000,
+            "AutoSkipDelay": 1000,
+            "NextNodesId": [
+                2303621295984
+            ],
+            "ActNum": 1,
+            "ActName": "В Поисках Чекушки"
+        }
+    ],
+    "CharacterAppearances": [
+        {
+            "Id": 2303621311936,
+            "InitialDelay": 500,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2303621323504
+            ],
+            "CharacterId": "guy",
+            "Position": 0
+        }
+    ],
+    "CharacterDisappearances": [
+        {
+            "Id": 2619957004176,
+            "InitialDelay": 500,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2619956992608
+            ],
+            "CharacterId": "guy"
+        },
+        {
+            "Id": 1670814953680,
+            "InitialDelay": 500,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670814956848
+            ],
+            "CharacterId": "guy"
+        },
+        {
+            "Id": 1670867498896,
+            "InitialDelay": 500,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867472592
+            ],
+            "CharacterId": "guy"
+        },
+        {
+            "Id": 1670867530224,
+            "InitialDelay": 500,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867533392
+            ],
+            "CharacterId": "guy"
+        }
+    ],
+    "Choices": [
+        {
+            "Id": 2303621335072,
+            "InitialDelay": 0,
+            "AutoSkipDelay": -1,
+            "NextNodesId": [
+                2619956928720,
+                1670814817440,
+                2619957023792,
+                1670867364592
+            ],
+            "Choices": [
+                "Эй, парень, есть чирик?",
+                "Клевый прикид, чел!",
+                "Эй, чел, дай сотку",
+                "ИДИ СЮДА СУКА!"
+            ]
+        },
+        {
+            "Id": 1670814890592,
+            "InitialDelay": 0,
+            "AutoSkipDelay": -1,
+            "NextNodesId": [
+                1670814974592,
+                2619957023792,
+                -1,
+                -1
+            ],
+            "Choices": [
+                "*Попросить вежливо*",
+                "Дай сотку!",
+                "",
+                ""
+            ]
+        },
+        {
+            "Id": 1670814920272,
+            "InitialDelay": 0,
+            "AutoSkipDelay": -1,
+            "NextNodesId": [
+                1670867332256,
+                1670867364592,
+                -1,
+                -1
+            ],
+            "Choices": [
+                "Ну дай 25 хотя бы!",
+                "ЗАРЕЖУ, СУКА!",
+                "",
+                ""
+            ]
+        },
+        {
+            "Id": 1670867545248,
+            "InitialDelay": 0,
+            "AutoSkipDelay": -1,
+            "NextNodesId": [
+                1670815007216,
+                1670867364592,
+                -1,
+                -1
+            ],
+            "Choices": [
+                "*Забить*",
+                "*Догнать*",
+                "",
+                ""
+            ]
+        },
+        {
+            "Id": 1670867425456,
+            "InitialDelay": 0,
+            "AutoSkipDelay": -1,
+            "NextNodesId": [
+                1670867438464,
+                1670867491424,
+                -1,
+                -1
+            ],
+            "Choices": [
+                "*Заорать как бешенный*",
+                "ОТДАВАЙ ДЕНЬГИ!",
+                "",
+                ""
+            ]
+        }
+    ],
+    "Replicas": [
+        {
+            "Id": 2303621260480,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2303621292672
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Бошка болит...*"
+        },
+        {
+            "Id": 2303621292672,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2303621311936
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Нужен опохмел!*"
+        },
+        {
+            "Id": 2303621323504,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2303621335072
+            ],
+            "CharacterId": "guy",
+            "Emotion": 0,
+            "ReplicaText": "*Напевает песню*"
+        },
+        {
+            "Id": 2619956928720,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2619956932176
+            ],
+            "CharacterId": "guy",
+            "Emotion": 0,
+            "ReplicaText": "Ну на, только отстань..."
+        },
+        {
+            "Id": 2619956992608,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670815007216
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Чирик есть, еще 15 и можно купить бояры.*"
+        },
+        {
+            "Id": 2619957023792,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670814920272
+            ],
+            "CharacterId": "guy",
+            "Emotion": 5,
+            "ReplicaText": "Ты афигел? Иди нафиг, бомжара!"
+        },
+        {
+            "Id": 1670814817440,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670814890592
+            ],
+            "CharacterId": "guy",
+            "Emotion": 3,
+            "ReplicaText": "Спасибо."
+        },
+        {
+            "Id": 1670814974592,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670814916672
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "Не соизволите выручить меня в трудной ситуации и подать на опохмел сколько не жалко?"
+        },
+        {
+            "Id": 1670814916672,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670814953680
+            ],
+            "CharacterId": "guy",
+            "Emotion": 3,
+            "ReplicaText": "Ну на. Сам в таких ситуациях бывал."
+        },
+        {
+            "Id": 1670814899648,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670815007216
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Щерный однако, бояру уже можно купить.*"
+        },
+        {
+            "Id": 1670815007216,
+            "InitialDelay": 2000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867329088
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Нужно идти в город*"
+        },
+        {
+            "Id": 1670867332256,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867341024
+            ],
+            "CharacterId": "guy",
+            "Emotion": 1,
+            "ReplicaText": "Отвали!"
+        },
+        {
+            "Id": 1670867341024,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867545248
+            ],
+            "CharacterId": "guy",
+            "Emotion": 1,
+            "ReplicaText": "*Быстро уходит*"
+        },
+        {
+            "Id": 1670867398512,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867414320
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Ну вот я и притопал*"
+        },
+        {
+            "Id": 1670867364592,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867425456
+            ],
+            "CharacterId": "guy",
+            "Emotion": 2,
+            "ReplicaText": "Тебе че, жить надоело?"
+        },
+        {
+            "Id": 1670867438464,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867454272
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "АААРГХ!"
+        },
+        {
+            "Id": 1670867454272,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867339872
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Изо рта идет пена, самый жуткий вид из всех*"
+        },
+        {
+            "Id": 1670867339872,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867498896
+            ],
+            "CharacterId": "guy",
+            "Emotion": 4,
+            "ReplicaText": "ААА! Забирай только отстань!"
+        },
+        {
+            "Id": 1670867475472,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867329088
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Опа, сотка! Пора в город за чикушкой!*"
+        },
+        {
+            "Id": 1670867491424,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867530224
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*АЙ, меня больно бьют!*"
+        },
+        {
+            "Id": 1670867533392,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867329088
+            ],
+            "CharacterId": "teller",
+            "Emotion": 0,
+            "ReplicaText": "*Ладно, пойду в город, может там чего найду*"
+        }
+    ],
+    "AddItemNodes": [
+        {
+            "Id": 2619956932176,
+            "InitialDelay": 0,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2619957004176
+            ],
+            "ItemId": "money",
+            "Amount": 10
+        },
+        {
+            "Id": 1670814956848,
+            "InitialDelay": 0,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670814899648
+            ],
+            "ItemId": "money",
+            "Amount": 25
+        },
+        {
+            "Id": 1670867472592,
+            "InitialDelay": 0,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867475472
+            ],
+            "ItemId": "money",
+            "Amount": 100
+        }
+    ],
+    "SwitchByItems": [],
+    "SetLandscapes": [
+        {
+            "Id": 2303621295984,
+            "InitialDelay": 0,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                2303621260480
+            ],
+            "LandscapeId": "out_of_town"
+        },
+        {
+            "Id": 1670867329088,
+            "InitialDelay": 1000,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [
+                1670867398512
+            ],
+            "LandscapeId": "town"
+        }
+    ],
+    "EndNodes": [
+        {
+            "Id": 1670867414320,
+            "InitialDelay": 0,
+            "AutoSkipDelay": 0,
+            "NextNodesId": [],
+            "EndingId": 1
+        }
+    ]
+}

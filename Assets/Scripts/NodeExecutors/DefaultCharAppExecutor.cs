@@ -6,7 +6,7 @@ using System;
 
 public class DefaultCharAppExecutor : NodeExecutorMediator<CharacterAppearance>
 {
-    public List<int> CharacterIds;
+    public List<string> CharacterIds;
     public List<Sprite> CharacterSprites;
     public GameObject CharPanel;
     public Image UiImage;
